@@ -1,10 +1,12 @@
 package hu.elte.eotvos.estike.controller;
 
-import hu.elte.eotvos.estike.dto.ProductDto;
-import hu.elte.eotvos.estike.service.ProductsService;
+import hu.elte.eotvos.estike.dto.CustomerDto;
+import hu.elte.eotvos.estike.dto.PurchaseRequest;
+import hu.elte.eotvos.estike.dto.PurchaseResponse;
+import hu.elte.eotvos.estike.service.CustomerService;
+import hu.elte.eotvos.estike.service.PurchaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,20 +16,15 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/products")
-public class ProductsController {
+@RequestMapping("/purchase")
+public class PurchaseController {
 
     @Autowired
-    private ProductsService productsService;
-
-    @GetMapping
-    public List<ProductDto> index() {
-        return productsService.listProducts();
-    }
+    private PurchaseService purchaseService;
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void create(@RequestBody ProductDto productDto) {
-        productsService.createProduct(productDto);
+    public PurchaseResponse buy(@RequestBody PurchaseRequest purchaseRequest) {
+        return purchaseService.buy(purchaseRequest);
     }
 
 }

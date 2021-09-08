@@ -8,7 +8,7 @@ import lombok.Value;
 
 @Data
 @Builder
-@JsonInclude
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ProductDto {
     Integer id;
     String name;
