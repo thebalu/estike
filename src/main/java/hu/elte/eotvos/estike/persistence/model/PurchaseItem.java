@@ -21,7 +21,7 @@ import javax.persistence.OneToMany;
 @Entity(name = "purchase_items")
 public class PurchaseItem {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private Integer priceAtPurchase;
     private Integer quantity;

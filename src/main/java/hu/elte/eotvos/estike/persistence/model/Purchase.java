@@ -26,7 +26,7 @@ import java.util.List;
 @Entity(name = "purchases")
 public class Purchase {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private Integer totalPrice;
 
