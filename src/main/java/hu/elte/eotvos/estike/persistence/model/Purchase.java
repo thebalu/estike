@@ -13,6 +13,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -30,6 +31,7 @@ public class Purchase {
     private Integer totalPrice;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "customerId")
     private Customer customer;
 
     @OneToMany(mappedBy = "purchase", fetch = FetchType.LAZY, cascade = CascadeType.ALL)

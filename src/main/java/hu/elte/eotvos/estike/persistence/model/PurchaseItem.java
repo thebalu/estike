@@ -10,6 +10,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -26,9 +27,11 @@ public class PurchaseItem {
     private Integer quantity;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "purchaseId")
     private Purchase purchase;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "productId")
     private Product product;
 
 }
