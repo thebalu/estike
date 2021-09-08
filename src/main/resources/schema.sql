@@ -16,7 +16,6 @@ CREATE TABLE products
 CREATE TABLE purchases
 (
     id   SERIAL,
-    name VARCHAR NOT NULL,
     totalPrice INTEGER NOT NULL,
     customerId INTEGER NOT NULL
 );
