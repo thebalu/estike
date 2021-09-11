@@ -12,7 +12,7 @@ public class ApiKeyValidatorConfig implements WebMvcConfigurer {
     @Value("${security.api.key}")
     private String apiKey;
 
-    @Value("${springdoc.swagger-ui.path:/swagger-ui.html}")
+    @Value("${springdoc.swagger-ui.path:/swagger-ui}")
     private String swaggerPath;
 
     @Override
