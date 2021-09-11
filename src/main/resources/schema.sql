@@ -28,3 +28,12 @@ CREATE TABLE purchase_items
     purchaseId INTEGER NOT NULL,
     productId INTEGER NOT NULL
 );
+
+CREATE TABLE transactions
+(
+    id   SERIAL,
+    amount INTEGER NOT NULL,
+    customerId INTEGER NOT NULL,
+    happenedAt TIMESTAMP,
+    storedAt TIMESTAMP
+);

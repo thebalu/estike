@@ -10,15 +10,8 @@ import java.util.List;
 @Value
 @Builder
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class PurchaseRequest {
+public class TransactionRequest {
     Integer customerId;
-    List<ProductQuantity> products;
+    Integer amount;
     LocalDateTime happenedAt;
-
-    @Value
-    @JsonInclude(JsonInclude.Include.NON_NULL)
-    public static class ProductQuantity {
-        Integer productId;
-        Integer quantity;
-    }
 }

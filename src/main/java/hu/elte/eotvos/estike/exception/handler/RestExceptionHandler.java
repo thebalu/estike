@@ -1,6 +1,7 @@
 package hu.elte.eotvos.estike.exception.handler;
 
 import hu.elte.eotvos.estike.dto.ErrorResponse;
+import hu.elte.eotvos.estike.exception.AuthException;
 import hu.elte.eotvos.estike.exception.NotFoundException;
 import hu.elte.eotvos.estike.exception.ValidationException;
 import org.slf4j.Logger;
@@ -36,6 +37,17 @@ public class RestExceptionHandler {
         return new ErrorResponse("illegalArgument", e.getMessage());
     }
 
+    ////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////// HTTP 401  ///////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////
+
+    @ExceptionHandler(AuthException.class)
+    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    public ErrorResponse handleAuthException(AuthException e) {
+        logger.warn("Unauthorized access", e);
+
+        return new ErrorResponse("unauthorized", e.getMessage());
+    }
     ////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////// HTTP 404  ///////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////

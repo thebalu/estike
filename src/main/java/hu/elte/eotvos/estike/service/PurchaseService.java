@@ -15,6 +15,8 @@ import hu.elte.eotvos.estike.persistence.repo.PurchaseRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +32,7 @@ public class PurchaseService {
     @Autowired
     private ProductRepo productRepo;
 
+    @Transactional
     public PurchaseResponse buy(PurchaseRequest purchaseRequest) {
         Customer customer = customerRepo
                 .findById(purchaseRequest.getCustomerId())
@@ -37,6 +40,7 @@ public class PurchaseService {
 
         Purchase purchase = new Purchase();
         purchase.setCustomer(customer);
+        purchase.setHappenedAt(purchaseRequest.getHappenedAt());
 
         List<PurchaseItem> items = new ArrayList<>();
         int totalPrice = 0;

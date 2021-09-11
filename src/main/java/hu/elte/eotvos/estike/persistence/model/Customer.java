@@ -36,6 +36,9 @@ public class Customer {
     @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
     private List<Purchase> purchases;
 
+    @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
+    private List<Transaction> transactions;
+
     public static Customer fromCustomerDto(CustomerDto dto) {
         return Customer.builder()
                 .name(dto.getName())
