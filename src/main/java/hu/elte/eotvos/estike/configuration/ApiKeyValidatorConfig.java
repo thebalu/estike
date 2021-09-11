@@ -12,11 +12,14 @@ public class ApiKeyValidatorConfig implements WebMvcConfigurer {
     @Value("${security.api.key}")
     private String apiKey;
 
-    @Value("${springdoc.swagger-ui.path:/swagger-ui}")
+    @Value("${springdoc.swagger-ui.path:/swagger}")
     private String swaggerPath;
+
+    @Value("${springdoc.api-docs.path:/swagger}")
+    private String apiDocsPath;
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new ApiKeyValidatorInterceptor(apiKey, swaggerPath));
+        registry.addInterceptor(new ApiKeyValidatorInterceptor(apiKey, swaggerPath, apiDocsPath));
     }
 }

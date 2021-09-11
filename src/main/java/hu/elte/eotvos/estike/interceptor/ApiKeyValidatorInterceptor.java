@@ -10,16 +10,18 @@ import javax.servlet.http.HttpServletResponse;
 public class ApiKeyValidatorInterceptor implements HandlerInterceptor {
     private final String apiKey;
     private final String swaggerPath;
+    private final String apiDocsPath;
     private static final String API_KEY_HEADER = "Api-Key";
 
-    public ApiKeyValidatorInterceptor(String apiKey, String swaggerPath) {
+    public ApiKeyValidatorInterceptor(String apiKey, String swaggerPath, String apiDocsPath) {
         this.apiKey = apiKey;
         this.swaggerPath = Preconditions.checkNotNull(swaggerPath);
+        this.apiDocsPath = Preconditions.checkNotNull(apiDocsPath);
     }
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
-        if (request.getRequestURI().startsWith(swaggerPath)) {
+        if (request.getRequestURI().startsWith(swaggerPath) || request.getRequestURI().startsWith(apiDocsPath) ) {
             return true;
         }
 
