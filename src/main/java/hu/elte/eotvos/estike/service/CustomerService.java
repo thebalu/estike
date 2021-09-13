@@ -1,6 +1,7 @@
 package hu.elte.eotvos.estike.service;
 
 import hu.elte.eotvos.estike.dto.CustomerDto;
+import hu.elte.eotvos.estike.dto.DetailedCustomerDto;
 import hu.elte.eotvos.estike.dto.ProductDto;
 import hu.elte.eotvos.estike.dto.TransactionDto;
 import hu.elte.eotvos.estike.dto.TransactionRequest;
@@ -33,6 +34,16 @@ public class CustomerService {
     public List<CustomerDto> listCustomers() {
         return customerRepo.findAll().stream().map(CustomerDto::fromCustomer).collect(Collectors.toList());
     }
+
+//    public DetailedCustomerDto getDetails(Integer customerId) {
+//        Customer customer = customerRepo
+//                .findById(customerId)
+//                .orElseThrow(() -> new NotFoundException("Customer with id " + customerId + " not found."));
+//
+//        DetailedCustomerDto dto = DetailedCustomerDto.fromCustomer(customer);
+//
+//        dto.setFavoriteProducts();
+//    }
 
     @Transactional
     public void createCustomer(CustomerDto customerDto) {

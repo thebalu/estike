@@ -1,6 +1,7 @@
 package hu.elte.eotvos.estike.controller;
 
 import hu.elte.eotvos.estike.dto.CustomerDto;
+import hu.elte.eotvos.estike.dto.PurchaseDto;
 import hu.elte.eotvos.estike.dto.PurchaseRequest;
 import hu.elte.eotvos.estike.dto.PurchaseResponse;
 import hu.elte.eotvos.estike.service.CustomerService;
@@ -25,6 +26,11 @@ public class PurchaseController {
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public PurchaseResponse buy(@RequestBody PurchaseRequest purchaseRequest) {
         return purchaseService.buy(purchaseRequest);
+    }
+
+    @GetMapping
+    public List<PurchaseDto> listPurchases() {
+        return purchaseService.listPurchases();
     }
 
 }

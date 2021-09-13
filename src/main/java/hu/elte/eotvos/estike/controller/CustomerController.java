@@ -34,7 +34,7 @@ public class CustomerController {
     }
 
 
-    @PostMapping(value = "/transactions/add-balance", consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/transactions", consumes = MediaType.APPLICATION_JSON_VALUE)
     public TransactionResponse addBalance(@RequestBody TransactionRequest transactionRequest) {
         return customerService.addBalance(transactionRequest);
     }

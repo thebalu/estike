@@ -1,5 +1,6 @@
 package hu.elte.eotvos.estike.persistence.model;
 
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import hu.elte.eotvos.estike.dto.CustomerDto;
 import hu.elte.eotvos.estike.dto.ProductDto;
 import lombok.AllArgsConstructor;
@@ -38,6 +39,9 @@ public class Customer {
 
     @OneToMany(mappedBy = "customer", fetch = FetchType.LAZY)
     private List<Transaction> transactions;
+
+    // Count of how many of each product they have purchased
+    private ObjectNode productMap;
 
     public static Customer fromCustomerDto(CustomerDto dto) {
         return Customer.builder()
